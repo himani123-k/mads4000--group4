@@ -73,7 +73,7 @@ public class Ticket {
         } else if (numberOfTickets < 1) {
             System.out.println("Invalid number entered");
         } else {
-            System.out.println("MAx Capacity is 3");
+            System.out.println("Max Capacity is 3");
         }
 
         System.out.println("Please select a different movie");
