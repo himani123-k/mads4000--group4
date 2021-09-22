@@ -54,29 +54,40 @@ public class Ticket {
                 return;
             }
         }
+        int cont = 0;
+
         if (numberOfTickets >= 1 && numberOfTickets < 4) {
             for (InPersonScreening movie : Main.inPersonMovies) {
                 if (movie.getMovieID() == movieID) {
                     if (numberOfTickets > movie.getCapacity()) {
-                        System.out.println("Movie tickets sold out for " + movie.getTitle());
+                        cont = 0;
+                        System.out.println("Movie tickets left for " + movie.getTitle() + " is " + movie.getCapacity());
+                        return;
                     } else {
                         Ticket ticket;
                         for (int i = 0; i < numberOfTickets; i++) {
                             ticket = new Ticket(LocalDateTime.now(), movie);
                             customer.getPurchasedTickets().add(ticket);
+                            cont = 0;
                         }
                         movie.setCapacity(movie.getCapacity() - numberOfTickets);
                         return;
                     }
+
+                } else {
+                    cont = 1;
                 }
             }
+
+            if (cont == 1) {
+                System.out.println("Please select a different movie, this movie id is invalid!!");
+            }
+
         } else if (numberOfTickets < 1) {
             System.out.println("Invalid number entered");
         } else {
             System.out.println("Max Capacity is 3");
         }
-
-        System.out.println("Please select a different movie");
     }
 
     public void viewPurchaseHistory(Customer customer) {
