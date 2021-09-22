@@ -58,7 +58,7 @@ public class OnlineScreening extends Movie {
                         ticket.getMovie().getRunTime());
             }
         }
-
+        int cont = 1;
         if (hasPurchasedOnlineMovies) {
             System.out.println("Enter Movie ID to watch");
             Scanner scanner = new Scanner(System.in);
@@ -69,7 +69,11 @@ public class OnlineScreening extends Movie {
                             + movie.getTitle().replaceAll("\\s", "");
                     System.out.println("Click on the link to watch movie: " + url);
                     scanner.nextLine();
+                    cont = 0;
                 }
+            }
+            if (cont == 1) {
+                System.out.println("No ticket associated with the movie Id entered by you");
             }
             scanner.nextLine();
             System.out.println("Press enter to return back to the menu!!");
